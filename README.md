@@ -1,2 +1,2 @@
 # mvc-music-store
-MVC Music Store tutorial for ASP.NET MVC 3
+MVC Music Store sample application for ASP.NET MVC 3
