@@ -16,5 +16,4 @@
 			}
 		stage 'Archive'
 			archiveArtifacts artifacts: 'MvcMusicStore/bin/**/*'
-		}
 	}
