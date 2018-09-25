@@ -5,13 +5,16 @@
 			checkout scm
 
 		stage 'Build Release'
-		bat "\"${tool 'MSBuild'}\" MvcMusicStore/MvcMusicStore.csproj /p:Configuration=Release /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
+			bat "\"${tool 'MSBuild'}\" MvcMusicStore/MvcMusicStore.csproj /p:Configuration=Release /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
 			
 		stage 'Build Debug'
-			timeout(time: 1, unit: 'SECONDS'){
+			steps {
+				timeout(time: 20, unit: 'SECONDS') {
 				bat "\"${tool 'MSBuild'}\" MvcMusicStore/MvcMusicStore.csproj /p:Configuration=Debug /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
+
+				}
 			}
-	stage 'Archive'
+		stage 'Archive'
 			archiveArtifacts artifacts: 'MvcMusicStore/bin/**/*'
+		}
 	}
-}
